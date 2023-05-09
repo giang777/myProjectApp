@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { CheckBox } from 'react-native-elements'
 
-const Login = (props) => {
+const Register = (props) => {
     return (
         <View style={styles.container}>
             <View style={styles.viewMain}>
@@ -19,6 +19,7 @@ const Login = (props) => {
                     {/*View body */}
                     <View style={styles.viewBodyTop}>
                         {/*Top */}
+                        
                         <View
                             style={{
                                 width: "100%",
@@ -26,7 +27,37 @@ const Login = (props) => {
                                 borderBottomWidth: 1,
                             }}
                         >
-                            {/*username */}
+                            {/*name*/}
+                            <View
+                                style={{
+                                    width: "100%",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    padding: 10
+                                }}
+                            >
+                                <Icon name='user' size={20} color={'grey'} />
+                                <TextInput
+                                    style={{
+                                        width: "100%",
+                                        height: 30,
+                                        marginLeft: 20
+                                    }}
+                                    placeholder='Nhập tên đăng nhập'
+                                />
+                            </View>
+
+                        </View>
+
+                        <View
+                            style={{
+                                width: "100%",
+                                borderBottomColor: "gray",
+                                borderBottomWidth: 1,
+                                marginTop: 40
+                            }}
+                        >
+                            {/*Username*/}
                             <View
                                 style={{
                                     width: "100%",
@@ -43,6 +74,38 @@ const Login = (props) => {
                                         marginLeft: 20
                                     }}
                                     placeholder='Nhập tài khoản'
+                                    secureTextEntry={true}
+                                />
+                            </View>
+
+                        </View>
+
+                        <View
+                            style={{
+                                width: "100%",
+                                borderBottomColor: "gray",
+                                borderBottomWidth: 1,
+                                marginTop: 40
+                            }}
+                        >
+                            {/*password */}
+                            <View
+                                style={{
+                                    width: "100%",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    padding: 10
+                                }}
+                            >
+                                <Icon name='key' size={20} color={'grey'} />
+                                <TextInput
+                                    style={{
+                                        width: "100%",
+                                        height: 30,
+                                        marginLeft: 20
+                                    }}
+                                    placeholder='Nhập lại mật khẩu'
+                                    secureTextEntry={true}
                                 />
                             </View>
 
@@ -79,29 +142,6 @@ const Login = (props) => {
 
                         </View>
 
-                        <View 
-                            style={{
-                                width: "100%",
-                                flexDirection:"row",
-                                justifyContent:"space-between",
-                                marginTop:30,
-                            }}
-                        >
-                            <CheckBox
-                                size={20}
-                                checked={true}
-                                title="Lưu mật khẩu"
-                            />
-                            <TouchableOpacity>
-                                <Text
-                                    style={{
-                                        fontSize:15,
-                                        fontWeight:"900"
-                                    }}
-                                >Quên mật khẩu ?</Text>
-                            </TouchableOpacity>
-                        </View>
-
                         <TouchableOpacity
                             style={{
                                 width:"100%",
@@ -112,7 +152,6 @@ const Login = (props) => {
                                 backgroundColor:"aqua",
                                 borderRadius:10,
                             }}
-                            onPress={()=>{props.navigation.navigate("Home")}}
                         >
                             <Text
                                 style={{
@@ -120,47 +159,8 @@ const Login = (props) => {
                                     fontWeight:"700",
                                     color:"white",
                                 }}
-                            >Đăng nhập</Text>
+                            >Đăng Ký</Text>
                         </TouchableOpacity>
-                    </View>
-
-                    <View style={styles.viewBodyBottom}>
-                        {/*Bottom */}
-                        <Text>Hoặc đăng nhập bằng</Text>
-                        <View
-                            style={{
-                                width: "100%",
-                                flexDirection: "row",
-                                justifyContent: "space-evenly",
-                                marginTop: 20
-                            }}
-                        >
-                            <TouchableOpacity
-                                style={{
-                                    width: 40,
-                                    height: 40,
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    borderRadius: 20,
-                                    backgroundColor: "blue",
-                                }}
-                            >
-                                <Icon name='facebook' size={25} color={'#fff'} />
-                            </TouchableOpacity>
-
-                            <TouchableOpacity
-                                style={{
-                                    width: 40,
-                                    height: 40,
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    borderRadius: 20,
-                                    backgroundColor: "red",
-                                }}
-                            >
-                                <Icon name='google' size={25} color={'#fff'} />
-                            </TouchableOpacity>
-                        </View>
                     </View>
                 </View>
                 <View style={styles.viewFooter}>
@@ -169,9 +169,9 @@ const Login = (props) => {
                         style={{
                             fontSize: 15,
                         }}
-                    >Chưa có tài khoản ?</Text>
+                    >Đã có tài khoản ?</Text>
                     <TouchableOpacity 
-                        onPress={()=>{props.navigation.navigate("Register")}}
+                        onPress={()=>{props.navigation.navigate("Login")}}
                     >
                         <Text
                             style={{
@@ -180,7 +180,7 @@ const Login = (props) => {
                                 color: "black",
                                 marginTop: 20
                             }}
-                        >Đăng ký</Text>
+                        >Đăng Nhập</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -188,7 +188,7 @@ const Login = (props) => {
     )
 }
 
-export default Login
+export default Register
 
 const styles = StyleSheet.create({
     container: {
