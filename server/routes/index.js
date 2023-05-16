@@ -1,7 +1,8 @@
 const express = require('express');
+const HomeCTL = require('../controller/main.js');
 const router = express.Router();
-const homeCTL = require("../controller/main.js");
+
 /* GET home page. */
-router.get('/', homeCTL.GetList);
+router.get('/',HomeCTL.GetList );
 
 module.exports = router;

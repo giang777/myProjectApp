@@ -1,6 +1,7 @@
 const firebase = require("../model/data.js");
 
 exports.GetList = async (req,res,next)=>{
+    
     const data = firebase.ref("User");
     const list =  await data.once('value');
     const listUser = [];
@@ -12,5 +13,7 @@ exports.GetList = async (req,res,next)=>{
     });
     console.log(listUser);
 
-    res.render("home/index");
+    res.render("index",{
+        layout : "./home/home.ejs"
+    });
 }
