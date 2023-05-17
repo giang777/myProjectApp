@@ -1,5 +1,5 @@
 const express = require('express');
-const HomeCTL = require('../controller/main.js');
+const HomeCTL = require('../controller/indexCTL.js');
 const router = express.Router();
 
 /* GET home page. */

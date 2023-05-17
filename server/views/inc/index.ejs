@@ -39,14 +39,14 @@
         <span class="tooltip">Search</span>
       </li>
       <li>
-        <a href="#">
+        <a href="/">
           <i class="bx bx-home-alt-2"></i>
           <span class="title">Trang chủ</span>
         </a>
         <span class="tooltip">Trang chủ</span>
       </li>
       <li>
-        <a href="#">
+        <a href="/user">
           <i class="bx bx-user"></i>
           <span class="title">Tài khoản</span>
         </a>
@@ -83,28 +83,6 @@
       </li>
     </ul>
   </section>
-  <section class="home">
-    <%- include(layout) %>
-  </section>
+<%- include('../inc/footer.ejs') %>
 
-  <script>
-    const btn_menu = document.querySelector(".btn-menu");
-    const side_bar = document.querySelector(".sidebar");
-
-    btn_menu.addEventListener("click", function () {
-      side_bar.classList.toggle("expand");
-      changebtn();
-    });
-
-    function changebtn() {
-      if (side_bar.classList.contains("expand")) {
-        btn_menu.classList.replace("bx-menu", "bx-menu-alt-right");
-      } else {
-        btn_menu.classList.replace("bx-menu-alt-right", "bx-menu");
-      }
-    }
-  </script>
-
-</body>
-
-</html>
+ 

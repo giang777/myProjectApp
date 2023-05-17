@@ -11,9 +11,8 @@ exports.GetList = async (req,res,next)=>{
             ...item.val(),
         })
     });
-    console.log(listUser);
+    //console.log(listUser);
 
-    res.render("index",{
-        layout : "./home/home.ejs"
+    res.render("home/home",{
     });
 }
