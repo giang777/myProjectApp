@@ -26,12 +26,31 @@
                             </td>
                             <td><img src="<%= item.img %>" alt="" width="80" height="80"></td>
                             <td>
-                                <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Xem chi tiết</button>
+                                <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Xem chi
+                                    tiết</button>
                             </td>
                         </tr>
                         <% }) %>
                 </tbody>
             </table>
+            <nav>
+                <% if(sizeList> 5){ %>
+                    <ul class="pagination">
+                                <li class="page-item "><a class="page-link" href="#">
+                                    Trước
+                                </a></li>
+                        <% for(let i=1; i <=count; i++) { %>
+                            <li class="page-item <%= i === set ? 'active' : '' %>"><a class="page-link"
+                                    href="/user/?page=<%= i %>">
+                                    <%= i %>
+                                </a></li>
+                            <%} %>
+                                <li class="page-item "><a class="page-link" href="#">
+                                    Sau
+                                </a></li>
+                    </ul>
+                    <%} %>
+            </nav>
         </div>
     </section>
     <%- include('../inc/footer.ejs') %>

@@ -18,9 +18,21 @@ exports.GetList = async (req, res, next) => {
     } finally {
 
     }
+    //tạo phân trang
+    const currentPage = parseInt(req.query.page) || 1;
+    const itemPage = 5;
+    const startIndex = (currentPage - 1) * itemPage;
+    const endIndex = startIndex + itemPage;
+
+    const totalItems = listUser.length;
+    const totalPages = Math.ceil(totalItems / itemPage);
+    const listPage = listUser.slice(startIndex, endIndex);
 
     res.render("user/list", {
-        list: listUser,
+        list: listUser.length <= 5 ? listUser : listPage,
+        sizeList : listUser.length,
+        count: totalPages,
+        set: currentPage,
     });
 }
 
@@ -68,8 +80,8 @@ exports.UpdateUser = async (req, res, next) => {
         user.setPasswrd("123456");
         user.setImg("https://i.pinimg.com/originals/3c/cf/db/3ccfdba6a41cbfb82ec383439a4f0f1f.jpg");
         user.setName("Nguyễn Minh Giang");
-        user.setFavourite([{hi:123}]);
-        user.setOrder([{hi:123}]);
+        user.setFavourite([{ hi: 123 }]);
+        user.setOrder([{ hi: 123 }]);
         user.setMark(0);
 
         await data.child("giang789").update(user);
