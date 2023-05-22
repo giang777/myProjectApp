@@ -1,10 +1,25 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { CheckBox } from 'react-native-elements'
+import userApi from '../../service/userApi'
 
 const Login = (props) => {
+    const [username, setusername] = useState('');
+    const [passwrd, setpasswrd] = useState('');
+
+    const CheckLogin = async ()=>{
+        const userLogin = await userApi.userApi(username,passwrd);
+        console.log(userLogin); // lưu vào redux
+        if(userLogin){
+            return props.navigation.navigate("Home");
+        }
+
+        return alert("Tài khoản hoặc mật khẩu không đúng !","Thông báo");
+        
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.viewMain}>
@@ -43,6 +58,7 @@ const Login = (props) => {
                                         marginLeft: 20
                                     }}
                                     placeholder='Nhập tài khoản'
+                                    onChangeText={(value)=>{setusername(value)}}
                                 />
                             </View>
 
@@ -74,6 +90,7 @@ const Login = (props) => {
                                     }}
                                     placeholder='Nhập mật khẩu'
                                     secureTextEntry={true}
+                                    onChangeText={(value)=>{setpasswrd(value)}}
                                 />
                             </View>
 
@@ -112,7 +129,7 @@ const Login = (props) => {
                                 backgroundColor:"aqua",
                                 borderRadius:10,
                             }}
-                            onPress={()=>{props.navigation.navigate("Home")}}
+                            onPress={CheckLogin}
                         >
                             <Text
                                 style={{

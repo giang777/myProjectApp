@@ -33,21 +33,25 @@
                         <% }) %>
                 </tbody>
             </table>
-            <nav>
+            <nav class="row justify-content-end">
                 <% if(sizeList> 5){ %>
                     <ul class="pagination">
-                                <li class="page-item "><a class="page-link" href="#">
-                                    Trước
-                                </a></li>
+                        <% if(check > 1){%>
+                            <li class="page-item "><a class="page-link" href="/user/?page=<%= --check %>">
+                                Trước
+                            </a></li>
+                        <%}%>
                         <% for(let i=1; i <=count; i++) { %>
                             <li class="page-item <%= i === set ? 'active' : '' %>"><a class="page-link"
                                     href="/user/?page=<%= i %>">
                                     <%= i %>
                                 </a></li>
                             <%} %>
-                                <li class="page-item "><a class="page-link" href="#">
+                            <% if(check != count){%>
+                                <li class="page-item "><a class="page-link" href="/user/?page=<%= ++check %>">
                                     Sau
                                 </a></li>
+                            <%}%>
                     </ul>
                     <%} %>
             </nav>

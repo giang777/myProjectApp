@@ -33,6 +33,7 @@ exports.GetList = async (req, res, next) => {
         sizeList : listUser.length,
         count: totalPages,
         set: currentPage,
+        check : req.query.page ? parseInt(req.query.page) : 1,
     });
 }
 
