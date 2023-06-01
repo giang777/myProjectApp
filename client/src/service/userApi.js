@@ -6,7 +6,7 @@ const userApi = async (tk, mk) => {
     try {
 
 
-        const api = await fetch('http://192.168.1.10:3000/apiUser/checkLogin', {
+        const api = await fetch('http://192.168.1.6:3000/apiUser/checkLogin', {
             method: "POST",
             headers: {
                 Accept: 'application/json',
@@ -16,6 +16,7 @@ const userApi = async (tk, mk) => {
         });
 
         const CheckLogin = await api.json();
+        console.log(api.status);
         if (api.status == 200) {
             const userLogin = CheckLogin.data;
             return userLogin;

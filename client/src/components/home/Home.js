@@ -16,7 +16,7 @@ const Home = (props) => {
         <Tab.Navigator
             initialRouteName="MainPage"
             screenOptions={{
-                tabBarActiveTintColor: 'aqua',
+                tabBarActiveTintColor: 'blue',
             }}
         >
             <Tab.Screen

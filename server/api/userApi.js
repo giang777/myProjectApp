@@ -29,15 +29,16 @@ exports.CheckLogin = async (req, res, next) => {
     const dataUser = firebase.ref("User");
     try {
         let username = req.body.username;
-        let passwrd = req.body.passwrd;
+        let passwrd = req.body.passwrd; console.log(passwrd);
         const userLogin = await dataUser.child(username).once('value');
-
+        
         if (userLogin.val()) {
-
-            if (passwrd === userLogin.val().passwrd) {
+            console.log('hihi');
+            if (passwrd == userLogin.val().passwrd) {
+                console.log('hehe');
                 return res.status(200).json({
                     data: {
-                        username: "giang789",
+                        username: username,
                         ...userLogin.val(),
                     },
                     msg: "thành công",
