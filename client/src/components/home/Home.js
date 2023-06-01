@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MainPage from './MainPage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Icon  from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Cart from './Cart';
 import Product from './Product';
 import User from './User';
@@ -27,7 +27,7 @@ const Home = (props) => {
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons name="home" color={color} size={size} />
                     ),
-                    headerShown:false,
+                    headerShown: false,
                 }}
             />
             <Tab.Screen
@@ -60,9 +60,9 @@ const Home = (props) => {
                     ),
                 }}
             />
-            
-            
-           
+
+
+
         </Tab.Navigator>
     )
 }

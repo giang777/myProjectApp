@@ -33,9 +33,7 @@ exports.CheckLogin = async (req, res, next) => {
         const userLogin = await dataUser.child(username).once('value');
         
         if (userLogin.val()) {
-            console.log('hihi');
             if (passwrd == userLogin.val().passwrd) {
-                console.log('hehe');
                 return res.status(200).json({
                     data: {
                         username: username,
