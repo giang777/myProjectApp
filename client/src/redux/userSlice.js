@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const userSlice = createSlice({
+export default userSlice = createSlice({
     name: "userLogin",
     initialState: {//giá trị khởi tạo ban đầu
         name: "",
@@ -20,5 +20,3 @@ export const userSlice = createSlice({
     }
 })
 
-export const { update } = userSlice.actions;
-export default userSlice.reducer;

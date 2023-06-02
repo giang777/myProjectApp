@@ -5,18 +5,19 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { CheckBox } from 'react-native-elements'
 import userApi from '../../service/userApi'
 import {useSelector,useDispatch} from "react-redux";
-import { update } from '../../redux/userSlice'
+import userSlice from '../../redux/userSlice'
 
 const Login = (props) => {
     const [username, setusername] = useState('');
     const [passwrd, setpasswrd] = useState('');
+
     const userLogin = useSelector((state)=> state.userLogin);//lấy dữ liệu từ redux
     const dispatch = useDispatch();//cập nhật dữ liệu trong redux
     
     const CheckLogin = async ()=>{
         const user = await userApi.userApi(username,passwrd); // lưu vào redux
         if(user){
-            dispatch(update(user));
+            dispatch(userSlice.actions.update(user));
             return props.navigation.navigate("Home");
         }
 

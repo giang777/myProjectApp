@@ -1,9 +1,11 @@
-//nơi lưu trữ thông 
+//nơi lưu trữ thông tin
 import { configureStore } from "@reduxjs/toolkit"
 import userSlice from "./userSlice"
 
-export default configureStore({
+const store =  configureStore({
   reducer: {
     userLogin: userSlice,
   }
 })
+
+export default store;
