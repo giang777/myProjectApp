@@ -1,11 +1,11 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { Alert, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { CheckBox } from 'react-native-elements'
 import userApi from '../../service/userApi'
 import {useSelector,useDispatch} from "react-redux";
-import userSlice from '../../redux/userSlice'
+import { update } from '../../redux/userSlice'
 
 const Login = (props) => {
     const [username, setusername] = useState('');
@@ -17,11 +17,11 @@ const Login = (props) => {
     const CheckLogin = async ()=>{
         const user = await userApi.userApi(username,passwrd); // lưu vào redux
         if(user){
-            dispatch(userSlice.actions.update(user));
+            dispatch(update(user));
             return props.navigation.navigate("Home");
         }
 
-        return alert("Tài khoản hoặc mật khẩu không đúng !","Thông báo");
+        return Alert.alert("Thông báo","Tài khoản hoặc mật khẩu không đúng !");
         
     }
 

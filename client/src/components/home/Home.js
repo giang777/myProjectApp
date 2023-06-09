@@ -36,7 +36,7 @@ const Home = (props) => {
                 options={{
                     tabBarLabel: 'Sản phẩm',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="note" color={color} size={size} />
+                        <MaterialCommunityIcons name="book" color={color} size={size} />
                     ),
                 }}
             />
@@ -58,6 +58,7 @@ const Home = (props) => {
                     tabBarIcon: ({ color, size }) => (
                         <Icon name="user" color={color} size={size} />
                     ),
+                    headerShown: false,
                 }}
             />
 
