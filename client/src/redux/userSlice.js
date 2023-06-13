@@ -16,10 +16,17 @@ export const userSlice = createSlice({
             state.mark = action.payload.mark;
             state.favourite = action.payload.favourite;
             state.order = action.payload.order;
-        }
+        },
+        remove: (state) => {
+            state.name = "";
+            state.img = "";
+            state.mark = 0;
+            state.favourite = [];
+            state.order = [];
+        },
     }
 })
 
-export const { update } = userSlice.actions;
+export const { update,remove } = userSlice.actions;
 export default userSlice.reducer;
 

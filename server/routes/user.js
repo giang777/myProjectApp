@@ -11,4 +11,5 @@ router.post('/update',UserCTL.UpdateUser);
 
 api.get('/get',UserAPI.Get);
 api.post('/checkLogin',UserAPI.CheckLogin);
+api.post('/register',UserAPI.Register);
 module.exports = {router,api};

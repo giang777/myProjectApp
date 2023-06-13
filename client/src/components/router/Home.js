@@ -2,12 +2,12 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MainPage from './MainPage';
+import MainPage from '../home/MainPage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Cart from './Cart';
-import Product from './Product';
-import User from './User';
+import Cart from '../home/Cart';
+import Product from '../home/Product';
+import User from '../user/User';
 
 const Tab = createBottomTabNavigator();
 

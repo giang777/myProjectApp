@@ -59,3 +59,44 @@ exports.CheckLogin = async (req, res, next) => {
         });
     }
 }
+
+exports.Register = async (req, res, next) => {
+    const dataUser = firebase.ref("User");
+    try {
+        let name = req.body.name;
+        let username = req.body.username;
+        let passwrd = req.body.passwrd; 
+        const userLogin = await dataUser.child(username).once('value');
+        
+        if (userLogin.val()) {
+            return res.status(401).json({
+                msg: "Tài khoản đã tồn tại",
+            });
+        }
+
+        let user = new UserMd();
+        user.setPasswrd(passwrd);
+        user.setImg("https://i.pinimg.com/originals/3c/cf/db/3ccfdba6a41cbfb82ec383439a4f0f1f.jpg");
+        user.setName(name);
+        user.setFavourite([]);
+        user.setOrder([]);
+        user.setMark(0);
+        await dataUser.child(username).set(user)
+
+        return res.status(200).json({
+            data: {
+                username: username,
+                name:user.name,
+                img:user.img,
+                mark:user.mark,
+            },
+            msg: "thành công",
+        });
+
+
+    } catch (error) {
+        return res.status(500).json({
+            msg: "lỗi",
+        });
+    }
+}

@@ -8,7 +8,7 @@ import UserMenu from './UserMenu'
 const User = (props) => {
   return (
     <View style={styles.container}>
-       <UserLogin/>
+       <UserLogin onPress={()=>{props.navigation.navigate("Login")}}/>
        <UserMenu/>
     </View>
   )

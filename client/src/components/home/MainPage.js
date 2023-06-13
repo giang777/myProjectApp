@@ -6,6 +6,11 @@ const MainPage = () => {
 
   const userLogin = useSelector((state)=> state.userLogin);
   console.log(userLogin);
+  if(userLogin.name){
+    console.log(true);
+  }else{
+    console.log(false);
+  }
   return (
     <View>
       <Text>main</Text>

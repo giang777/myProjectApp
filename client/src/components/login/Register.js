@@ -1,10 +1,33 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
+import { Alert, StyleSheet, Text, TextInput, View } from 'react-native'
+import React, { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { CheckBox } from 'react-native-elements'
+import userApi from '../../service/userApi'
 
 const Register = (props) => {
+    const [name, setname] = useState("");
+    const [username, setusername] = useState("");
+    const [passwrd, setpasswrd] = useState("");
+    const [passwrd2, setpasswrd2] = useState("");
+
+    const register = async ()=>{
+        if(name.length === 0 || username.length === 0 || passwrd.length === 0 || passwrd2.length === 0){
+            return Alert.alert("Thông báo","Không được để chống !");
+        }
+
+        if(passwrd2 != passwrd){
+            return Alert.alert("Thông báo","Mật khẩu không khớp !");
+        }
+
+        const userRegister = await userApi.register(name,username,passwrd);
+        if(userRegister){
+            return props.navigation.navigate("Home");
+        }
+
+        return Alert.alert("Thông báo","Tài khoản đã tồn tại !");
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.viewMain}>
@@ -44,6 +67,7 @@ const Register = (props) => {
                                         marginLeft: 20
                                     }}
                                     placeholder='Nhập tên đăng nhập'
+                                    onChangeText={(value)=>{setname(value)}}
                                 />
                             </View>
 
@@ -74,38 +98,8 @@ const Register = (props) => {
                                         marginLeft: 20
                                     }}
                                     placeholder='Nhập tài khoản'
-                                    secureTextEntry={true}
-                                />
-                            </View>
-
-                        </View>
-
-                        <View
-                            style={{
-                                width: "100%",
-                                borderBottomColor: "gray",
-                                borderBottomWidth: 1,
-                                marginTop: 40
-                            }}
-                        >
-                            {/*password */}
-                            <View
-                                style={{
-                                    width: "100%",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    padding: 10
-                                }}
-                            >
-                                <Icon name='key' size={20} color={'grey'} />
-                                <TextInput
-                                    style={{
-                                        width: "100%",
-                                        height: 30,
-                                        marginLeft: 20
-                                    }}
-                                    placeholder='Nhập lại mật khẩu'
-                                    secureTextEntry={true}
+                                    onChangeText={(value)=>{setusername(value)}}
+                                    
                                 />
                             </View>
 
@@ -137,6 +131,39 @@ const Register = (props) => {
                                     }}
                                     placeholder='Nhập mật khẩu'
                                     secureTextEntry={true}
+                                    onChangeText={(value)=>{setpasswrd(value)}}
+                                />
+                            </View>
+
+                        </View>
+
+                        <View
+                            style={{
+                                width: "100%",
+                                borderBottomColor: "gray",
+                                borderBottomWidth: 1,
+                                marginTop: 40
+                            }}
+                        >
+                            {/*password */}
+                            <View
+                                style={{
+                                    width: "100%",
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    padding: 10
+                                }}
+                            >
+                                <Icon name='key' size={20} color={'grey'} />
+                                <TextInput
+                                    style={{
+                                        width: "100%",
+                                        height: 30,
+                                        marginLeft: 20
+                                    }}
+                                    placeholder='Nhập lại mật khẩu'
+                                    secureTextEntry={true}
+                                    onChangeText={(value)=>{setpasswrd2(value)}}
                                 />
                             </View>
 
@@ -152,6 +179,7 @@ const Register = (props) => {
                                 backgroundColor:"aqua",
                                 borderRadius:10,
                             }}
+                            onPress={register}
                         >
                             <Text
                                 style={{
